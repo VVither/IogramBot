@@ -9,7 +9,7 @@ def register_handlers(dp):
     @dp.callback_query(F.data.startswith("right_answer_"))
     async def right_answer(callback: types.CallbackQuery):
         user_id = callback.from_user.id
-        button_text = callback.data.split('_')[2]  # Получаем текст кнопки из callback.data
+        button_text = callback.data.split('_')[2]
         await callback.bot.edit_message_reply_markup(
             chat_id=user_id,
             message_id=callback.message.message_id,
@@ -34,7 +34,7 @@ def register_handlers(dp):
         user_id = callback.from_user.id
         current_question_index, correct_answers = await get_quiz_state(user_id)
         correct_option = quiz_data[current_question_index]['options'][quiz_data[current_question_index]['correct_option']]
-        button_text = callback.data.split('_')[2]  # Получаем текст кнопки из callback.data
+        button_text = callback.data.split('_')[2]  
         await callback.bot.edit_message_reply_markup(
             chat_id=user_id,
             message_id=callback.message.message_id,
