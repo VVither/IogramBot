@@ -50,6 +50,7 @@ def register_handlers(dp):
              await callback.message.answer("Это был последний вопрос. Квиз завершен!")
              await show_leaderboard(callback.message)
 
+
     @dp.message(Command("start"))
     async def cmd_start(message: types.Message):
         builder = ReplyKeyboardBuilder()
@@ -65,7 +66,6 @@ def register_handlers(dp):
 
     async def new_quiz(message):
         user_id = message.from_user.id
-        # Исправленный вызов
         await update_quiz_state(user_id, 0, 0)
         await get_question(message, user_id)
 
